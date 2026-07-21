@@ -1,0 +1,21 @@
+# resources/ingest_statsbomb.job.yml
+resources:
+  jobs:
+    ingest_statsbomb_bronze:
+      name: ingest_statsbomb_bronze_${bundle.target}
+
+      tasks:
+        - task_key: ingest_bronze
+          spark_python_task:
+            python_file: ../src/ingestion/ingest_statsbomb_bronze.py
+          # References the environment spec defined below (required for
+          # Python script tasks on serverless).
+          environment_key: statsbomb_env
+
+      # Serverless task execution environments.
+      environments:
+        - environment_key: statsbomb_env
+          spec:
+            environment_version: "4"
+            dependencies:
+              - statsbombpy

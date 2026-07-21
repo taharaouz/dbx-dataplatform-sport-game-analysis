@@ -1,0 +1,20 @@
+resources:
+  pipelines:
+
+    transform_statsbomb:
+      name: transform_statsbomb_${bundle.target}
+
+      catalog: dev_02_silver
+      schema: sport_technical_statsbomb
+
+      continuous: false
+      development: true
+      channel: CURRENT
+      serverless: true
+      photon: true
+
+      libraries:
+        - glob:
+            include: ${workspace.file_path}/src/transformation/02_silver/sport_technical_statsbomb/**
+        - glob:
+            include: ${workspace.file_path}/src/transformation/03_gold/game_analysis/**
