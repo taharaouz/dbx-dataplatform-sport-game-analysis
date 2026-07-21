@@ -21,7 +21,7 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://dbc-6e272d3f-3f61.cloud.databricks.com
+      host: https://dbc-6e272d3f-3f61.cloud.databricks.com # A modifier en mettant le lien vers votre workspace personnel
     variables:
       env_prefix: dev_
       
